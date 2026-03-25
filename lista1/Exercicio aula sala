@@ -1,1 +1,22 @@
 
+
+package main
+import "fmt"
+
+func main() {
+  var qtdAlunos int
+  var somaNotas, mediaNotas, mediaAluno float64 =  0.0,0.0,0.0
+  
+  fmt.Print("Informe a quantidade de alunos: ")
+  fmt.Scan(&qtdAlunos)
+  
+  for i:= 0; i < qtdAlunos; i++ {
+      fmt.Printf("Informe a média do(a) %d aluno(a): ", i + 1)
+      fmt.Scan(&mediaAluno)
+      somaNotas += mediaAluno
+      
+  }
+  mediaNotas = somaNotas/float64(qtdAlunos)
+  
+  fmt.Printf("A média geral da turma é %.2f\n", mediaNotas)
+}
