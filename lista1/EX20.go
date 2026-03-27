@@ -20,6 +20,6 @@ func main() {
 
 	tempoTotal = (horas * 3600) + (minutos * 60) + segundos
 
-	fmt.Printf("O TEMPO EM SEGUNDOS E = %ds\n", tempoTotal)
+	fmt.Printf("O TEMPO EM SEGUNDOS E = %dsegundos\n", tempoTotal)
 
 }
