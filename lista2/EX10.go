@@ -23,7 +23,7 @@ func main() {
 	_, err := fmt.Scan(&destino, &idaVolta)
 	//Verifica se foi digitado um palavra e retorna mensagem de erro.
 	if err != nil {
-		fmt.Println("Por favor informe um número válido!\n(1 ao 5 para Destino)\n1 - para sim ida e volta\n2 - para ida e volta\n")
+		fmt.Println("Por favor informe um número válido!\n(1 ao 4 para Destino)\n1 - para sim ida e volta\n2 - para ida e volta\n")
 		return
 	}
 	//Verifica se foi digitado um valor que nao tenha nenhuma regiao
@@ -36,31 +36,31 @@ func main() {
 		return
 	}
 	//Usando if e else para fazer a logica. Fica muito longo
-	if destino == 1 {
-		if idaVolta == 2 {
-			fmt.Println("O valor somente de ida é R$ 500,00 reais\n")
-		} else {
-			fmt.Println("O valor de ida e volta é R$ 900,00 reais\n")
-		}
-	} else if destino == 2 {
-		if idaVolta == 2 {
-			fmt.Println("O valor somente de ida é R$ 350,00 reais\n")
-		} else {
-			fmt.Println("O valor de ida e volta é R$ 650,00 reais\n")
-		}
-	} else if destino == 3 {
-		if idaVolta == 2 {
-			fmt.Println("O valor somente de ida é R$ 350,00 reais\n")
-		} else {
-			fmt.Println("O valor de ida e volta é R$ 600,00 reais\n")
-		}
-	} else {
-		if idaVolta == 2 {
-			fmt.Println("O valor somente de ida é R$ 300,00 reais\n")
-		} else {
-			fmt.Println("O valor de ida e volta é R$ 550,00 reais\n")
-		}
-	}
+	// if destino == 1 {
+	// 	if idaVolta == 2 {
+	// 		fmt.Println("O valor somente de ida é R$ 500,00 reais\n")
+	// 	} else {
+	// 		fmt.Println("O valor de ida e volta é R$ 900,00 reais\n")
+	// 	}
+	// } else if destino == 2 {
+	// 	if idaVolta == 2 {
+	// 		fmt.Println("O valor somente de ida é R$ 350,00 reais\n")
+	// 	} else {
+	// 		fmt.Println("O valor de ida e volta é R$ 650,00 reais\n")
+	// 	}
+	// } else if destino == 3 {
+	// 	if idaVolta == 2 {
+	// 		fmt.Println("O valor somente de ida é R$ 350,00 reais\n")
+	// 	} else {
+	// 		fmt.Println("O valor de ida e volta é R$ 600,00 reais\n")
+	// 	}
+	// } else {
+	// 	if idaVolta == 2 {
+	// 		fmt.Println("O valor somente de ida é R$ 300,00 reais\n")
+	// 	} else {
+	// 		fmt.Println("O valor de ida e volta é R$ 550,00 reais\n")
+	// 	}
+	// }
 	//Usando o switch case:
 	switch destino {
 	case 1:
@@ -87,6 +87,8 @@ func main() {
 		} else {
 			preco = 300.00
 		}
+	default:
+		fmt.Print("Erro inesperado no destino!\n")
 	}
 	fmt.Printf("O valor da passagem é R$ %.2f\n", preco)
 
