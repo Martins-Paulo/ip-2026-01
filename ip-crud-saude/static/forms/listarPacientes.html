@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Pacientes</title>
+        <link rel="stylesheet" href="../styles/index.style.css">
+    </head>S
+<body>
+    <main>
+        <h1>Pacientes Registrados no Supabase</h1>
+        <a href="/index.html">⬅ Voltar para o Início</a> | <a href="/forms/createPaciente.html">➕ Cadastrar Novo</a>
+
+        <div id="loading" class="loading">Buscando dados na nuvem...</div>
+        
+        <table id="tabela-pacientes" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Sintomas</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+                </tbody>
+        </table>
+
+        <script>
+            // Executa automaticamente quando a página carrega
+            window.onload = function() {
+                // Faz uma requisição GET para a rota de listagem do nosso servidor Go
+                fetch('/pacientes')
+                    .then(response => response.json())
+                    .then(pacientes => {
+                        const loadingDiv = document.getElementById('loading');
+                        const tabela = document.getElementById('tabela-pacientes');
+                        const corpoTabela = document.getElementById('corpo-tabela');
+
+                        if (!pacientes || pacientes.length === 0) {
+                            loadingDiv.innerText = "Nenhum paciente cadastrado até o momento.";
+                            return;
+                        }
+
+                        // Esconde o texto de carregando e mostra a tabela
+                        loadingDiv.style.display = 'none';
+                        tabela.style.display = 'table';
+
+                        // Passa de paciente em paciente e cria a linha na tabela
+                        pacientes.forEach(p => {
+                            const linha = document.createElement('tr');
+                            linha.innerHTML = `
+                                <td>${p.id}</td>
+                                <td><strong>${p.nome}</strong></td>
+                                <td>${p.idade} anos</td>
+                                <td>${p.sintomas}</td>
+                            `;
+                            corpoTabela.appendChild(linha);
+                        });
+                    })
+                    .catch(err => {
+                        document.getElementById('loading').innerText = "Erro ao carregar dados do servidor.";
+                        console.error(err);
+                    });
+            };
+        </script>
+    </main>
+</body>
+</html>

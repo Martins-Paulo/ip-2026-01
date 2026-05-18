@@ -15,7 +15,7 @@ func main() {
 	utils.ConnectToDB()
 
 	// Cria um file server para servir arquivos estáticos da pasta "./static"
-	fileserver := http.FileServer(http.Dir("./static"))
+	fileserver := http.FileServer(http.Dir("../static"))
 
 	// Define a rota raiz ("/") para servir os arquivos estáticos
 	http.Handle("/", fileserver)
